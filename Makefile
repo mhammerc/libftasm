@@ -23,7 +23,13 @@ TARGET := libftasm.a
 OBJ1 :=\
 	ft_bzero.o\
 	ft_strcat.o\
-	ft_isalpha.o
+	ft_isalpha.o\
+	ft_isdigit.o\
+	ft_isalnum.o\
+	ft_isascii.o\
+	ft_isprint.o\
+	ft_isspace.o\
+	ft_ispunct.o
 
 OBJ := $(patsubst %,$(OBJ_PATH)%,$(OBJ1))
 

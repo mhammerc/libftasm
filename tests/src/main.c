@@ -1,19 +1,26 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include <ctype.h>
 
 extern void ft_bzero(char *s, size_t n);
 extern char *ft_strcat(char *dest, char *src);
 extern int  ft_isalpha(int c);
+extern int  ft_isdigit(int c);
+extern int  ft_isalnum(int c);
+extern int  ft_isascii(int c);
+extern int  ft_isspace(int c);
+extern int  ft_ispunct(int c);
+extern int  ft_isprint(int c);
 
 void    check_ok(int num)
 {
-    printf("\tCheck %d: OK\n", num);
+    printf("\tCheck %.2d: OK\n", num);
 }
 
 void    check_fail(int num)
 {
-    printf("\tCheck %d: FAIL\n", num);
+    printf("\tCheck %.2d: FAIL\n", num);
 }
 
 void    check(int condition, int num)
@@ -30,6 +37,8 @@ int main()
     char    *str2;
     int     integer;
     int     integer2;
+    int     ret;
+    int     ret2;
     size_t  len;
     size_t  len2;
 
@@ -72,6 +81,95 @@ int main()
     check(ft_isalpha('a' - 1) == 0, 9);
     check(ft_isalpha('z' + 1) == 0, 10);
 
+    //--
+    printf("\n\nTEST 3: ft_isdigit\n");
+    check(ft_isdigit('0' - 1) == 0, 1);
+    check(ft_isdigit('9' + 1) == 0, 2);
+    check(ft_isdigit('0') == 1, 3);
+    check(ft_isdigit('1') == 1, 4);
+    check(ft_isdigit('2') == 1, 5);
+    check(ft_isdigit('3') == 1, 6);
+    check(ft_isdigit('4') == 1, 7);
+    check(ft_isdigit('5') == 1, 8);
+    check(ft_isdigit('6') == 1, 9);
+    check(ft_isdigit('7') == 1, 10);
+    check(ft_isdigit('8') == 1, 11);
+    check(ft_isdigit('9') == 1, 12);
+
+    printf("\n\nTEST 4: ft_isalnum\n");
+    check(ft_isalnum('A') == 1, 1);
+    check(ft_isalnum('H') == 1, 2);
+    check(ft_isalnum('Z') == 1, 3);
+    check(ft_isalnum('a') == 1, 4);
+    check(ft_isalnum('h') == 1, 5);
+    check(ft_isalnum('z') == 1, 6);
+    check(ft_isalnum('A' - 1) == 0, 7);
+    check(ft_isalnum('Z' + 1) == 0, 8);
+    check(ft_isalnum('a' - 1) == 0, 9);
+    check(ft_isalnum('z' + 1) == 0, 10);
+    check(ft_isalnum('0' - 1) == 0, 11);
+    check(ft_isalnum('9' + 1) == 0, 12);
+    check(ft_isalnum('0') == 1, 13);
+    check(ft_isalnum('1') == 1, 14);
+    check(ft_isalnum('2') == 1, 15);
+    check(ft_isalnum('3') == 1, 16);
+    check(ft_isalnum('4') == 1, 17);
+    check(ft_isalnum('5') == 1, 18);
+    check(ft_isalnum('6') == 1, 19);
+    check(ft_isalnum('7') == 1, 20);
+    check(ft_isalnum('8') == 1, 21);
+    check(ft_isalnum('9') == 1, 22);
+
+    printf("\n\nTEST 5: ft_isascii\n");
+    check(ft_isascii(-1) == 0, 1);
+    check(ft_isascii(128) == 0, 2);
+    check(ft_isascii(0) == 1, 3);
+    check(ft_isascii(127) == 1, 4);
+    check(ft_isascii(42) == 1, 5);
+
+    printf("\n\nTEST 6: ft_isspace\n");
+    check(ft_isspace(' ') == 1, 1);
+    check(ft_isspace(' ' + 1) == 0, 2);
+    check(ft_isspace(' ' - 1) == 0, 3);
+
+    printf("\n\nTEST 7: ft_ispunct\n");
+    check(ft_ispunct(33) == 1, 1);
+    check(ft_ispunct(47) == 1, 2);
+    check(ft_ispunct(58) == 1, 3);
+    check(ft_ispunct(64) == 1, 4);
+    check(ft_ispunct(91) == 1, 5);
+    check(ft_ispunct(96) == 1, 6);
+    check(ft_ispunct(123) == 1, 7);
+    check(ft_ispunct(126) == 1, 8);
+    check(ft_ispunct(33 - 1) == 0, 9);
+    check(ft_ispunct(47 + 1) == 0, 10);
+    check(ft_ispunct(58 - 1) == 0, 11);
+    check(ft_ispunct(64 + 1) == 0, 12);
+    check(ft_ispunct(91 - 1) == 0, 13);
+    check(ft_ispunct(96 + 1) == 0, 14);
+    check(ft_ispunct(123 - 1) == 0, 15);
+    check(ft_ispunct(126 + 1) == 0, 16);
+
+    printf("\n\nTEST 8: ft_isprint\n");
+    integer = 0;
+    while (integer <= 127)
+    {
+        ret = ft_isprint(integer);
+        ret2 = isprint(integer);
+        if (ret == 0 && ret2 != 0)
+        {
+            check(0, 1);
+            break;
+        }
+        else if (ret2 == 0 && ret != 0)
+        {
+            check(0, 1);
+            break;
+        }
+        ++integer;
+    }
+    if (integer == 128)
+        check(1, 1);
 
     return (0);
 }

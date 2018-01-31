@@ -8,7 +8,7 @@ ft_isspace:
 	mov rax, 0
 	cmp rdi, ' '
 	jne quit
-	mov rax, 1
+	mov rax, rdi
 
 quit:
 	ret

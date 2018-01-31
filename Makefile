@@ -29,7 +29,10 @@ OBJ1 :=\
 	ft_isascii.o\
 	ft_isprint.o\
 	ft_isspace.o\
-	ft_ispunct.o
+	ft_ispunct.o\
+	ft_toupper.o\
+	ft_tolower.o\
+	ft_puts.o
 
 OBJ := $(patsubst %,$(OBJ_PATH)%,$(OBJ1))
 
@@ -55,5 +58,8 @@ fclean:
 	@$(RM) -rfv $(TARGET)
 
 all: $(TARGET)
+
+test: all
+	make -C tests
 
 re: fclean all

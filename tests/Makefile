@@ -1,4 +1,4 @@
-C_FLAGS := -Wall -Werror -Wextra
+C_FLAGS := -Wall -Werror -Wextra -g
 CC := gcc
 RM := rm
 LINKFLAGS := -L.. -lftasm
@@ -16,7 +16,7 @@ OBJ_PATH := ./obj/
 INC_PATH :=
 
 # Executable Name
-TARGET := tester
+TARGET := ../tester
 
 # Files to compile
 OBJ1 :=\

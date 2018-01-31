@@ -8,8 +8,8 @@ section .text
 
 ft_isalnum:
 	call ft_isalpha
-	cmp rax, 1
-	je quit
+	cmp rax, 0
+	jg quit
 	call ft_isdigit
 
 quit:

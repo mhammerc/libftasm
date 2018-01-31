@@ -9,7 +9,7 @@ return_false:
 	ret
 
 return_true:
-	mov rax, 1
+	mov rax, rdi
 	ret
 
 ft_isdigit:

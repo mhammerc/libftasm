@@ -16,7 +16,7 @@ section .text
 	global ft_ispunct
 
 ft_ispunct:
-	mov rax, 1
+	mov rax, rdi
 
 	mov ebx, edi
 	sub ebx, 33

@@ -12,6 +12,9 @@ extern int  ft_isascii(int c);
 extern int  ft_isspace(int c);
 extern int  ft_ispunct(int c);
 extern int  ft_isprint(int c);
+extern int  ft_toupper(int c);
+extern int  ft_tolower(int c);
+extern int  ft_puts(char *str);
 
 void    check_ok(int num)
 {
@@ -29,6 +32,42 @@ void    check(int condition, int num)
         check_ok(num);
     else
         check_fail(num);
+}
+
+typedef int (*t_ascii_func)(int);
+
+void    check_every_ascii(t_ascii_func original, t_ascii_func tested, int strict)
+{
+    int i;
+    int ret1;
+    int ret2;
+
+    i = 0;
+    while (i <= 127)
+    {
+        ret1 = original(i);
+        ret2 = tested(i);
+
+        if (strict && ret1 != ret2)
+        {
+            check_fail(1);
+            break;
+        }
+
+        if (!strict && (
+            (ret1 > 0 && ret2 == 0) ||
+            (ret1 == 0 && ret2 > 0)))
+        {
+            printf("\tTest: %d, Original: %d, tested: %d\n", i, ret1, ret2);
+            check_fail(1);
+            break;
+        }
+
+        ++i;
+    }
+    if (i == 128)
+        check_ok(1);
+
 }
 
 int main()
@@ -151,25 +190,16 @@ int main()
     check(ft_ispunct(126 + 1) == 0, 16);
 
     printf("\n\nTEST 8: ft_isprint\n");
-    integer = 0;
-    while (integer <= 127)
-    {
-        ret = ft_isprint(integer);
-        ret2 = isprint(integer);
-        if (ret == 0 && ret2 != 0)
-        {
-            check(0, 1);
-            break;
-        }
-        else if (ret2 == 0 && ret != 0)
-        {
-            check(0, 1);
-            break;
-        }
-        ++integer;
-    }
-    if (integer == 128)
-        check(1, 1);
+    check_every_ascii(&isprint, &ft_isprint, 0);
+
+    printf("\n\nTEST 9: ft_toupper\n");
+    check_every_ascii(&toupper, &ft_toupper, 1);
+
+    printf("\n\nTEST 9: ft_toupper\n");
+    check_every_ascii(&tolower, &ft_tolower, 1);
+
+    printf("\n\nTEST 10: ft_puts\n");
+    ft_puts("Hello :D");
 
     return (0);
 }

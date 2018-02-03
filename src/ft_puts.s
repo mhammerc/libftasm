@@ -6,7 +6,7 @@
 
 section .text
     global ft_puts
-    extern strlen   ; TODO: must use ft_strlen
+    extern ft_strlen   ; TODO: must use ft_strlen
 
 ft_puts:
     push rbp
@@ -16,7 +16,7 @@ ft_puts:
 
     ; First, get string length with strlen
     mov rax, 0
-    call strlen wrt ..plt
+    call ft_strlen wrt ..plt
 
     mov rsi, rdi    ; 2nd arg: the string (from first arg)
     mov rdx, rax    ; 3rd arg: string length (from strlen return value)

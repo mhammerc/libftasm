@@ -1,4 +1,4 @@
-FLAGS := -f elf64
+FLAGS := -f elf64 -g
 CC := nasm
 RM := rm
 LINKFLAGS := rc -lc
@@ -32,7 +32,11 @@ OBJ1 :=\
 	ft_ispunct.o\
 	ft_toupper.o\
 	ft_tolower.o\
-	ft_puts.o
+	ft_puts.o\
+	ft_strlen.o\
+	ft_memset.o\
+	ft_memcpy.o\
+	ft_strdup.o
 
 OBJ := $(patsubst %,$(OBJ_PATH)%,$(OBJ1))
 

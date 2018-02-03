@@ -1,7 +1,7 @@
-C_FLAGS := -Wall -Werror -Wextra
+C_FLAGS := -Wall -Werror -Wextra -g
 CC := gcc
 RM := rm
-LINKFLAGS := -L.. -lftasm
+LINKFLAGS := -L.. -lftasm -g -lcheck -lm -lpthread -lrt -lcheck_pic -lsubunit
 
 #LINKFLAGS := -lanylibrary
 

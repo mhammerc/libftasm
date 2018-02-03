@@ -2,6 +2,7 @@
 ; edi       edx, eax
 ; dil, sil
 ; rdi, rsi, rdx
+; write(int fd, void *buf, size_t len)
 
 section .text
     global ft_puts
@@ -9,21 +10,21 @@ section .text
 
 ft_puts:
     push rbp
-    mov rbp, rsp
 
-    ;push rdi
-    ;mov rbx, rdi
+    cmp rdi, 0
+    je end
+
     ; First, get string length with strlen
     mov rax, 0
-    call strlen
-    ;pop rdi
-    ;mov rdx, rax    ; String length is in rdx
+    call strlen wrt ..plt
 
-    ;mov rsi, rbx
-    ;mov rax, 1      ; syscall write(int fd, char *buf, size_t len)
-    ;mov rdi, 1      ; stdout
-    ;syscall
+    mov rsi, rdi    ; 2nd arg: the string (from first arg)
+    mov rdx, rax    ; 3rd arg: string length (from strlen return value)
 
-    mov rsp, rbp
+    mov rax, 1      ; syscall write(int fd, void *buf, size_t len)
+    mov rdi, 1      ; stdout
+    syscall
+
+end:
     pop rbp
     ret

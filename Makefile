@@ -1,7 +1,7 @@
 FLAGS := -f elf64
 CC := nasm
 RM := rm
-LINKFLAGS := rc
+LINKFLAGS := rc -lc
 
 ARCHIVER := ar
 #LINKFLAGS := -lanylibrary

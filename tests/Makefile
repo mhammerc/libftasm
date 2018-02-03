@@ -1,4 +1,4 @@
-C_FLAGS := -Wall -Werror -Wextra -g
+C_FLAGS := -Wall -Werror -Wextra
 CC := gcc
 RM := rm
 LINKFLAGS := -L.. -lftasm

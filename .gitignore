@@ -1,4 +1,6 @@
 obj
 *.a
 *.o
-./tester
+tests/basic
+tests/ft_puts
+tests/ft_cat

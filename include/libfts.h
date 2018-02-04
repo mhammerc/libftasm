@@ -24,4 +24,18 @@ void    *ft_memcpy(void *dest, const void *src, size_t n);
 
 void	ft_cat(int fd);
 
+typedef struct      s_list
+{
+    void            *content;
+    struct s_list   *next;
+    size_t          content_size;
+} __attribute__((aligned(8),packed))     t_list;
+
+t_list              *ft_lstnew(void const *content, size_t content_size);
+void                ft_lstadd(t_list **alst, t_list *new);
+void                ft_lstaddback(t_list **alst, t_list *new);
+t_list              *ft_lstat(t_list *list, size_t index);
+void                ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void                ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+
 #endif

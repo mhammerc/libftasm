@@ -37,7 +37,13 @@ OBJ1 :=\
 	ft_memset.o\
 	ft_memcpy.o\
 	ft_strdup.o\
-	ft_cat.o
+	ft_cat.o\
+	ft_lstnew.o\
+	ft_lstadd.o\
+	ft_lstaddback.o\
+	ft_lstat.o\
+	ft_lstdel.o\
+	ft_lstdelone.o
 
 OBJ := $(patsubst %,$(OBJ_PATH)%,$(OBJ1))
 

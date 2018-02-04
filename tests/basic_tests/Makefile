@@ -1,4 +1,4 @@
-C_FLAGS := -g
+FLAGS := -g
 CC := gcc
 RM := rm
 LINKFLAGS := -L../.. -lfts -lcheck -lm -lpthread -lrt -lcheck_pic -lsubunit

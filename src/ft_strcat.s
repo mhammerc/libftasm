@@ -4,17 +4,13 @@
 section .text
 	global ft_strcat
 
-quit:
-	pop rdi
-	mov rax, rdi
-	ret
 
 ft_strcat:
-	push rdi
 	cmp rdi, 0		; Check if dest and src are NULL.
-	je quit			; If so, quit.
+	je quit_error			; If so, quit.
 	cmp rsi, 0
-	je quit
+	je quit_error
+	push rdi
 
 going_to_dest_end_loop:	; A loop to reach the end of dest
 	cmp byte [rdi], 0
@@ -32,3 +28,11 @@ writing_src_in_dest:	; A loop to write src in current pos of dest
 	je quit
 	jmp writing_src_in_dest
 
+quit:
+	pop rdi
+	mov rax, rdi
+	ret
+
+quit_error:
+	mov rax, 0
+	ret

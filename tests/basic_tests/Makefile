@@ -1,4 +1,4 @@
-C_FLAGS := -Wall -Werror -Wextra -g
+C_FLAGS := -g
 CC := gcc
 RM := rm
 LINKFLAGS := -L../.. -lfts -lcheck -lm -lpthread -lrt -lcheck_pic -lsubunit

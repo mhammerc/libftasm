@@ -13,6 +13,7 @@ section .text
     extern malloc
 
 ft_strdup:
+    mov rax, 0
     cmp rdi, 0          ; if rdi (s) is null then quit
     je quit
 

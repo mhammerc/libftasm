@@ -1,5 +1,6 @@
 ; void ft_bzero(void *s, size_t n)
 ; rdi, rsi, rdx, rcx, r8, r9
+; TODO using rep
 
 section .text
 	global ft_bzero

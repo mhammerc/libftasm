@@ -1,9 +1,9 @@
 ; void ft_strcat(char *dest, char *src)
 ; rdi, rsi
+; TODO: using rep
 
 section .text
 	global ft_strcat
-
 
 ft_strcat:
 	cmp rdi, 0		; Check if dest and src are NULL.

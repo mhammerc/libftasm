@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "../../include/libft.h"
+#include "../../include/libfts.h"
 
 void    test_for_each_ascii(char *test_name, int (*func1)(int), int (*func2)(int), int strict)
 {

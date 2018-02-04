@@ -17,7 +17,7 @@ OBJ_PATH := ./obj/
 INC_PATH :=
 
 # Executable Name
-TARGET := libftasm.a
+TARGET := libfts.a
 
 # Files to compile
 OBJ1 :=\
@@ -36,7 +36,8 @@ OBJ1 :=\
 	ft_strlen.o\
 	ft_memset.o\
 	ft_memcpy.o\
-	ft_strdup.o
+	ft_strdup.o\
+	ft_cat.o
 
 OBJ := $(patsubst %,$(OBJ_PATH)%,$(OBJ1))
 

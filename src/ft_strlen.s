@@ -15,6 +15,5 @@ ft_strlen:
     mov rax, -2
     sub rax, rcx
     
-
 quit:
     ret

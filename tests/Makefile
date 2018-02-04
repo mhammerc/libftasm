@@ -1,50 +1,19 @@
-C_FLAGS := -Wall -Werror -Wextra -g
-CC := gcc
-RM := rm
-LINKFLAGS := -L.. -lftasm -g -lcheck -lm -lpthread -lrt -lcheck_pic -lsubunit
+all:
+	make -C basic_tests
+	make -C ft_cat_tests
+	make -C ft_puts_tests
 
-#LINKFLAGS := -lanylibrary
-
-.PHONY: $(TARGET)
-.PHONY: clean
-
-VPATH := ./src/ ./obj/ ./include/
-
-# Path for .c , .h and .o Files
-SRC_PATH := ./src/
-OBJ_PATH := ./obj/
-INC_PATH :=
-
-# Executable Name
-TARGET := ../tester
-
-# Files to compile
-OBJ1 :=\
-	main.o \
-
-OBJ := $(patsubst %,$(OBJ_PATH)%,$(OBJ1))
-
-# Build .o first
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p obj
-	@echo [CC] $<
-	@$(CC) $(FLAGS) -o $@ -c $< $(INC_PATH)
-
-# Build final Binary
-$(TARGET): $(OBJ)
-	@echo [INFO] Creating Binary Executable [$(TARGET)]
-	@$(CC) -o $@ $^ $(LINKFLAGS)
-
-# Clean all the object files and the binary
 clean:
-	@echo "[Cleaning objects]"
-	@$(RM) -rfv $(OBJ_PATH)
+	make -C basic_tests clean
+	make -C ft_cat_tests clean
+	make -C ft_puts_tests clean
 
 fclean:
-	@echo "[Cleaning objects and binary]"
-	@$(RM) -rfv $(OBJ_PATH)
-	@$(RM) -rfv $(TARGET)
+	make -C basic_tests fclean
+	make -C ft_cat_tests fclean
+	make -C ft_puts_tests fclean
 
-all: $(TARGET)
-
-re: fclean all
+re:
+	make -C basic_tests re
+	make -C ft_cat_tests re
+	make -C ft_puts_tests re

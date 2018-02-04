@@ -1,30 +1,39 @@
 ; void ft_puts(const char *s)
-; edi       edx, eax
-; dil, sil
 ; rdi, rsi, rdx
 ; write(int fd, void *buf, size_t len)
 
+section .data
+    STDOUT equ 1
+    SYS_WRITE equ 1
+    NEW_LINE db 0xa ; \n
+
 section .text
     global ft_puts
-    extern ft_strlen   ; TODO: must use ft_strlen
+    extern ft_strlen
 
 ft_puts:
-    push rbp
-
     cmp rdi, 0
-    je end
+    je quit
 
-    ; First, get string length with strlen
-    mov rax, 0
-    call ft_strlen wrt ..plt
+    push rdi
 
-    mov rsi, rdi    ; 2nd arg: the string (from first arg)
-    mov rdx, rax    ; 3rd arg: string length (from strlen return value)
+    ; First, get string length with ft_strlen
+    call ft_strlen
 
-    mov rax, 1      ; syscall write(int fd, void *buf, size_t len)
-    mov rdi, 1      ; stdout
+    ; Print the string
+    mov rdi, STDOUT         ; 1st arg: stdout
+    pop rsi                 ; 2nd arg: the string
+    mov rdx, rax            ; 3rd arg: string length (from strlen return value)
+
+    mov rax, SYS_WRITE      ; syscall write(int fd, void *buf, size_t len)
     syscall
 
-end:
-    pop rbp
+    ; Print a \n
+    mov rax, SYS_WRITE      ; syscall write
+    mov rdi, STDOUT         ; 1st arg
+    mov rsi, NEW_LINE       ; 2nd arg
+    mov rdx, 1              ; 3rt arg
+    syscall
+
+quit:
     ret

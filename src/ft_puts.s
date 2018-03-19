@@ -8,17 +8,17 @@ section .data
     NEW_LINE db 0xa ; \n
 
 section .text
-    global ft_puts
-    extern ft_strlen
+    global _ft_puts
+    extern _ft_strlen
 
-ft_puts:
+_ft_puts:
     cmp rdi, 0
     je quit
 
     push rdi
 
     ; First, get string length with ft_strlen
-    call ft_strlen
+    call _ft_strlen
 
     ; Print the string
     mov rdi, STDOUT         ; 1st arg: stdout

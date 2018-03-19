@@ -9,17 +9,17 @@
 %include "include/libfts.s"
 
 section .text
-    global ft_lstnew
-    extern malloc
-    extern free
-    extern ft_memcpy
+    global _ft_lstnew
+    extern _malloc
+    extern _free
+    extern _ft_memcpy
 
-ft_lstnew:
+_ft_lstnew:
     push rdi
     push rsi
 
     mov rdi, SIZEOF_T_LIST
-    call malloc wrt ..plt                       ; Allocate t_list
+    call _malloc                                ; Allocate t_list
     cmp rax, 0                                  ; rax = list
     je quit_1
 
@@ -39,7 +39,7 @@ content_not_empty:
     push rax
 
     mov rdi, r9
-    call malloc wrt ..plt                       ; allocate list->content
+    call _malloc                                ; allocate list->content
     
     mov r10, rax                                ; r10 = newly allocated content
     pop rax
@@ -56,7 +56,7 @@ content_not_empty:
     mov rdi, r10
     mov rsi, r8
     mov rdx, r9
-    call ft_memcpy
+    call _ft_memcpy
 
     pop rax
     ret
@@ -74,6 +74,6 @@ quit_1:
 
 quit_2:
     mov rdi, rax
-    call free wrt ..plt                         ; free list
+    call _free                                     ; free list
     mov rax, 0
     ret

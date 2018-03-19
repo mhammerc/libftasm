@@ -13,9 +13,9 @@ section .data
     BUFFER_SIZE equ 4096
 
 section .text
-    global ft_cat
+    global _ft_cat
 
-ft_cat:
+_ft_cat:
     mov rdx, BUFFER_SIZE    ; Buffer size
     sub rsp, BUFFER_SIZE    ; Allocate the buffer
     mov rsi, rsp            ; Save the buffer pointer

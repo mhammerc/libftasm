@@ -5,10 +5,10 @@
 %include "include/libfts.s"
 
 section .text
-    global ft_lstdel
-    extern free
+    global _ft_lstdel
+    extern _free
 
-ft_lstdel:
+_ft_lstdel:
     cmp rdi, 0
     je quit
     cmp qword [rdi], 0
@@ -26,7 +26,7 @@ ft_lstdel:
 
     mov rdi, r9
     add rdi, t_list.next                    ; call the recursion on the next node
-    call ft_lstdel
+    call _ft_lstdel
 
     pop r10
     pop r9
@@ -46,7 +46,7 @@ ft_lstdel:
 
                                             ; (r9 end of life)
     mov rdi, r9                             ; and finally free the current node
-    call free wrt ..plt                     ; (not its content, del() did it.)
+    call _free                              ; (not its content, del() did it.)
 
     pop r8
     mov qword [r8], 0                       ; set *alst to zero (because it is freed).

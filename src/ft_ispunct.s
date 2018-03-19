@@ -13,9 +13,9 @@
 ;  Only four comparaisons.
 
 section .text
-	global ft_ispunct
+	global _ft_ispunct
 
-ft_ispunct:
+_ft_ispunct:
 	mov rax, rdi
 
 	mov ebx, edi

@@ -4,9 +4,9 @@
 %include "include/libfts.s"
 
 section .text
-    global ft_lstadd
+    global _ft_lstadd
 
-ft_lstadd:
+_ft_lstadd:
     cmp rdi, 0
     je quit
     cmp rsi, 0

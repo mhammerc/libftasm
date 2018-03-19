@@ -3,9 +3,9 @@
 ; using REP
 
 section .text
-    global ft_strlen
+    global _ft_strlen
 
-ft_strlen:
+_ft_strlen:
     mov rax, 0
     cmp rdi, 0
     je quit

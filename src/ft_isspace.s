@@ -2,9 +2,9 @@
 ; rdi
 
 section .text
-	global ft_isspace
+	global _ft_isspace
 
-ft_isspace:
+_ft_isspace:
 	mov rax, 0
 	cmp rdi, ' '
 	jne quit

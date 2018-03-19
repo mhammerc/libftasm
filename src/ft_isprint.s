@@ -2,21 +2,21 @@
 ; rdi, rsi
 
 section .text
-	global ft_isprint
-	extern ft_isspace
-	extern ft_isalnum
-	extern ft_ispunct
+	global _ft_isprint
+	extern _ft_isspace
+	extern _ft_isalnum
+	extern _ft_ispunct
 
-ft_isprint:			; Char is printable if:
-	call ft_isspace	; (ft_isspace(c) || ft_isalnum(c) || ft_ispunct(c))
+_ft_isprint:			; Char is printable if:
+	call _ft_isspace	; (ft_isspace(c) || ft_isalnum(c) || ft_ispunct(c))
 	cmp rax, 0
 	jg quit
 
-	call ft_isalnum
+	call _ft_isalnum
 	cmp rax, 0
 	jg quit
 
-	call ft_ispunct
+	call _ft_ispunct
 
 quit:
 	ret

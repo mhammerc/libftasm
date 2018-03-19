@@ -4,10 +4,10 @@
 %include "include/libfts.s"
 
 section .text
-    global ft_lstdelone
-    extern free
+    global _ft_lstdelone
+    extern _free
 
-ft_lstdelone:
+_ft_lstdelone:
     cmp rdi, 0
     je quit
     cmp qword [rdi], 0
@@ -32,7 +32,7 @@ ft_lstdelone:
     push r8
 
     mov rdi, r9                     ; r9 end of life
-    call free wrt ..plt
+    call _free
 
     pop r8
 

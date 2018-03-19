@@ -3,9 +3,9 @@
 ; TODO using rep
 
 section .text
-	global ft_bzero
+	global _ft_bzero
 
-ft_bzero:
+_ft_bzero:
 	cmp rdi, 0
 	je quit				; If s == 0 then quit
 

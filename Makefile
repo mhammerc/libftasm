@@ -1,10 +1,9 @@
-FLAGS := -f elf64 -g
+FLAGS := -f macho64 -g
 CC := nasm
 RM := rm
 LINKFLAGS := rc -lc
 
 ARCHIVER := ar
-#LINKFLAGS := -lanylibrary
 
 .PHONY: $(TARGET)
 .PHONY: clean

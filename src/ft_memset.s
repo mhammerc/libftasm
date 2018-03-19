@@ -4,9 +4,9 @@
 ; using REP
 
 section .text
-    global ft_memset
+    global _ft_memset
 
-ft_memset:
+_ft_memset:
     mov rbx, rdi
 
     cmp rdi, 0

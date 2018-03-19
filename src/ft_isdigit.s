@@ -2,7 +2,7 @@
 ; rdi, rsi
 
 section .text
-	global ft_isdigit
+	global _ft_isdigit
 
 return_false:
 	mov rax, 0
@@ -12,7 +12,7 @@ return_true:
 	mov rax, rdi
 	ret
 
-ft_isdigit:
+_ft_isdigit:
 	cmp rdi, 48
 	jl return_false
 	cmp rdi, 57

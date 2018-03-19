@@ -2,7 +2,7 @@
 ; rdi, rsi
 
 section .text
-	global ft_isalpha
+	global _ft_isalpha
 
 return_false:
 	mov rax, 0
@@ -12,7 +12,7 @@ return_true:
 	mov rax, rdi
 	ret
 
-ft_isalpha:
+_ft_isalpha:
 	cmp rdi, 65
 	jl return_false
 	cmp rdi, 90

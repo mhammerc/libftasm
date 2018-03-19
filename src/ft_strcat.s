@@ -3,9 +3,9 @@
 ; TODO: using rep
 
 section .text
-	global ft_strcat
+	global _ft_strcat
 
-ft_strcat:
+_ft_strcat:
 	cmp rdi, 0		; Check if dest and src are NULL.
 	je quit_error			; If so, quit.
 	cmp rsi, 0

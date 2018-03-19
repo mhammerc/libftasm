@@ -2,9 +2,9 @@
 ; rdi
 
 section .text
-    global ft_toupper
+    global _ft_toupper
 
-ft_toupper:
+_ft_toupper:
     mov rax, rdi
 
     ; We want to test if rdi is between 'a' and 'z'.

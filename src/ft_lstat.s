@@ -4,9 +4,9 @@
 %include "include/libfts.s"
 
 section .text
-    global ft_lstat
+    global _ft_lstat
 
-ft_lstat:
+_ft_lstat:
     mov rax, 0
 
     cmp rdi, 0                              ; list == null -> quit

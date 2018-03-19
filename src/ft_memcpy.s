@@ -4,9 +4,9 @@
 ; using REP
 
 section .text
-    global ft_memcpy
+    global _ft_memcpy
 
-ft_memcpy:
+_ft_memcpy:
     mov rbx, rdi
 
     mov rax, 0
